@@ -15,7 +15,7 @@ export default function YoutubeScanner() {
     setResults(null);
     
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://streamshield-ai.onrender.com';
       const youtubeRes = await axios.post(`${API_URL}/api/youtube-search`, { query });
       setResults(youtubeRes.data);
     } catch (err) {
