@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Shield, Activity, Search, AlertTriangle, Settings, MonitorPlay, Globe } from 'lucide-react';
+import { Shield, Activity, Search, AlertTriangle, MonitorPlay, Globe } from 'lucide-react';
 import Dashboard from './Dashboard';
+import YoutubeScanner from './YoutubeScanner';
+import WebScanner from './WebScanner';
 
 function Sidebar() {
   const location = useLocation();
@@ -26,10 +28,6 @@ function Sidebar() {
           <Globe size={20} />
           <span>Web Scanner</span>
         </Link>
-        <Link to="/settings" className={`nav-item ${location.pathname === '/settings' ? 'active' : ''}`}>
-          <Settings size={20} />
-          <span>Settings</span>
-        </Link>
       </div>
     </div>
   );
@@ -43,9 +41,8 @@ function App() {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/youtube" element={<div className="empty-state"><h2>YouTube Scanner</h2><p>Select the monitoring dashboard to start scanning.</p></div>} />
-            <Route path="/web" element={<div className="empty-state"><h2>Web Scanner</h2><p>Select the monitoring dashboard to start scanning.</p></div>} />
-            <Route path="/settings" element={<div className="empty-state"><h2>Settings</h2><p>Configuration options</p></div>} />
+            <Route path="/youtube" element={<YoutubeScanner />} />
+            <Route path="/web" element={<WebScanner />} />
           </Routes>
         </div>
       </div>

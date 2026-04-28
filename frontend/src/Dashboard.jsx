@@ -206,10 +206,30 @@ export default function Dashboard() {
       )}
       
       {!results && !isScanning && !error && (
-        <div className="empty-state">
-          <ShieldAlert size={64} className="empty-icon" />
-          <h2 style={{ color: 'var(--text-main)', marginTop: '1rem' }}>Ready to Scan</h2>
-          <p>Enter a keyword, match name, or stream title above to begin AI-powered piracy discovery.</p>
+        <div className="hero-section">
+          <div className="hero-badge">System Ready</div>
+          <h2 className="hero-title">Protect Your Digital Assets in Real-Time</h2>
+          <p className="hero-subtitle">
+            Enter your proprietary live event or match below. Our AI engine will automatically generate search variants, crawl the web for clone sites, and scan YouTube for unauthorized broadcasts.
+          </p>
+          
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon"><Search size={24} /></div>
+              <h3>1. Enter Event Details</h3>
+              <p>Type the exact match or event name (e.g. "Champions League Final") into the search bar above.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon"><Globe size={24} /></div>
+              <h3>2. AI Discovery</h3>
+              <p>Gemini AI generates keyword permutations to outsmart pirates trying to evade standard searches.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon"><ShieldAlert size={24} /></div>
+              <h3>3. Take Down Pirates</h3>
+              <p>Review the color-coded risk dashboard and instantly report highly suspicious mirrors and streams.</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
