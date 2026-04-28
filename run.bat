@@ -5,15 +5,15 @@ echo =========================================
 echo.
 
 :: Check if .env file exists
-if not exist ".env" (
-    echo [WARNING] .env file not found! 
-    echo Please copy .env.example to .env and fill in your API keys before running.
+if not exist "backend\.env" (
+    echo [WARNING] backend\.env file not found! 
+    echo Please copy backend\.env.example to backend\.env and fill in your API keys before running.
     echo.
 )
 
 :: Start Backend in a new window
 echo Starting FastAPI Backend (Port 8000)...
-start "StreamShield Backend" cmd /k ".\venv\Scripts\activate && uvicorn main:app --reload --port 8000"
+start "StreamShield Backend" cmd /k "cd backend && .\venv\Scripts\activate && uvicorn main:app --reload --port 8000"
 
 :: Start Frontend in a new window
 echo Starting React Frontend (Vite)...
