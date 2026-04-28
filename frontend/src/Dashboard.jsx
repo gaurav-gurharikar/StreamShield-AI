@@ -163,27 +163,34 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody>
-                      {results.youtube.live_streams.map((item, index) => (
+                      {results.youtube.live_streams.map((item, index) => {
+                        const titleLower = item.snippet.title.toLowerCase();
+                        const queryLower = query.toLowerCase();
+                        const isHighRisk = titleLower.includes(queryLower);
+                        const riskClass = isHighRisk ? 'risk-high' : 'risk-low';
+                        const riskText = isHighRisk ? 'High Risk' : 'Low Risk';
+
+                        return (
                         <tr key={index}>
                           <td style={{ maxWidth: '250px' }}>
                             <div style={{ fontWeight: '500', marginBottom: '0.25rem' }}>{item.snippet.title}</div>
-                            <a href={`https://youtube.com/watch?v=${item.id.videoId}`} target="_blank" rel="noreferrer" className="source-link" style={{ fontSize: '0.875rem', opacity: 0.7 }}>
+                            <a href={`https://youtube.com/watch?v=${item.id?.videoId}`} target="_blank" rel="noreferrer" className="source-link" style={{ fontSize: '0.875rem', opacity: 0.7 }}>
                               Watch <ExternalLink size={12} />
                             </a>
                           </td>
                           <td>{item.snippet.channelTitle}</td>
                           <td>
-                            <span className="risk-badge risk-high">
-                              High Risk
+                            <span className={`risk-badge ${riskClass}`}>
+                              {riskText}
                             </span>
                           </td>
                           <td>
-                            <button className="btn" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+                            <button className="btn" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }} disabled={!isHighRisk}>
                               Report Match
                             </button>
                           </td>
                         </tr>
-                      ))}
+                      )})}
                     </tbody>
                   </table>
                 </div>
