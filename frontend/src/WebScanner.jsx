@@ -15,7 +15,8 @@ export default function WebScanner() {
     setResults(null);
     
     try {
-      const webRes = await axios.post('http://127.0.0.1:8000/api/web-scan', { query });
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const webRes = await axios.post(`${API_URL}/api/web-scan`, { query });
       setResults(webRes.data);
     } catch (err) {
       console.error(err);

@@ -16,9 +16,9 @@ export default function Dashboard() {
     setResults(null);
     
     try {
-      // Simulate API call for now if backend isn't ready or run real requests
-      const youtubeRes = await axios.post('http://127.0.0.1:8000/api/youtube-search', { query });
-      const webRes = await axios.post('http://127.0.0.1:8000/api/web-scan', { query });
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const youtubeRes = await axios.post(`${API_URL}/api/youtube-search`, { query });
+      const webRes = await axios.post(`${API_URL}/api/web-scan`, { query });
       
       setResults({
         youtube: youtubeRes.data,

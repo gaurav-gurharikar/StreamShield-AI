@@ -15,7 +15,8 @@ export default function YoutubeScanner() {
     setResults(null);
     
     try {
-      const youtubeRes = await axios.post('http://127.0.0.1:8000/api/youtube-search', { query });
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const youtubeRes = await axios.post(`${API_URL}/api/youtube-search`, { query });
       setResults(youtubeRes.data);
     } catch (err) {
       console.error(err);
