@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+gunicorn
 google-api-python-client
 google-genai
 python-dotenv
